@@ -1,0 +1,7 @@
+switch.fluxer: {}
+automation.disable_flux_on_scene: {}
+sensor.switch_1_battery_level:
+  event_id: switch_1
+  friendly_name: Cube Battery Level
+sensor.switch_2_battery_level:
+  hidden: true

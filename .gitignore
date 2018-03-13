@@ -1,0 +1,9 @@
+*
+!python_scripts
+!custom_components
+!*.yaml
+!scenes
+!.gitignore
+!*.py
+secrets.yaml
+known_devices.yaml

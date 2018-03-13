@@ -1,0 +1,90 @@
+- action:
+  - service: switch.fluxer_update
+  alias: Flux
+  initial_state: 'off'
+  condition: []
+  id: '1520528492563'
+  trigger:
+  - platform: time
+    minutes: /1
+    seconds: 0
+- action:
+  - entity_id: automation.flux
+    service: automation.turn_off
+  alias: Disable Flux On Scene
+  condition: []
+  initial_state: 'off'
+  id: '1520533637982'
+  trigger:
+  - platform: event
+    event_type: call_service
+    event_data:
+      domain: scene
+      service: turn_on
+- action:
+  - entity_id: automation.flux
+    service: automation.turn_on
+  alias: Enable Flux In The Morning
+  initial_state: 'off'
+  condition: []
+  id: '1520503627982'
+  trigger:
+  - at: '21:53:00'
+    platform: time
+- action:
+  - data:
+      brightness: '100'
+      entity_id: light.light_1
+      kelvin: '2000'
+      transition: '600'
+    service: light.turn_on
+  alias: Wake up
+  initial_state: 'on'
+  condition: []
+  id: '1520550096070'
+  trigger:
+  - at: 08:30
+    platform: time
+- action:
+  - data:
+      brightness: '255'
+      entity_id: light.light_1
+      kelvin: '4000'
+      transition: '600'
+    service: light.turn_on
+  alias: Wake up 2
+  initial_state: 'on'
+  condition: []
+  id: '1520550356855'
+  trigger:
+  - at: 08:40:00
+    platform: time
+
+- trigger:
+    platform: time
+    seconds: '/1'
+  alias: Every second flashpy
+  initial_state: 'off'
+  action:
+    - data:
+        brightness: '255'
+        entity_id: light.light_1
+        kelvin: '4000'
+        transition: '600'
+      service: python_script.flash
+
+
+
+- alias: Cube
+  trigger:
+    - platform: event
+      event_type: deconz_event
+  action:
+    - service: python_script.cube
+      data_template:
+        id: '{{ trigger.event.data.id }}'
+        event: '{{ trigger.event.data.event }}'
+
+
+
+

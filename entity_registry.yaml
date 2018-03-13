@@ -1,0 +1,12 @@
+media_player.chromecast:
+  platform: cast
+  unique_id: 612572b6-1b45-9ccf-b338-6dfa8c82f6f7
+light.light_1:
+  platform: deconz
+  unique_id: 00:17:88:01:03:db:fd:b3-0b
+sensor.switch_2_battery_level:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:10:0b:d3-03-000c
+sensor.switch_1_battery_level:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:10:0b:d3-02-0012
