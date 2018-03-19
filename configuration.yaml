@@ -16,7 +16,11 @@ homeassistant:
 python_script:
 
 #hello_state:
-modify_light:
+#modify_light:
+
+mqtt:
+  broker: 192.168.10.48
+
 
 input_boolean:
   hello_state_on:
@@ -88,6 +92,13 @@ sun:
 # Weather prediction
 sensor:
   - platform: yr
+  - platform: mqtt
+    name: "Fabian's Mood"
+    state_topic: "home-assistant/fabian/mood"
+
+#  - platform: mqtt
+#    name: "Test MQTT"
+#    state_topic: "home-assistant/mqtt/test"
 
 #  - platform: random
 #    minimum: 0
@@ -112,34 +123,31 @@ light:
 
 
 scene:
-  - name: Bright day
+  - name: 1 Bright day
     entities:
       light.light_1:
         state: on
         kelvin: 4000
         brightness: 255
-  - name: Normal
+  - name: 2 Normal
     entities:
       light.light_1:
         state: on
         kelvin: 2700
         brightness: 255
-  - name: Dim red
+  - name: 3 Dimmer
+    entities:
+      light.light_1:
+        state: on
+        kelvin: 2000
+        brightness: 70
+  - name: 4 Dim
     entities:
       light.light_1:
         state: on
         kelvin: 2000
         brightness: 2
-  - name: Blue
-    entities:
-      light.light_1:
-        state: on
-        kelvin: 6500
-  - name: Red
-    entities:
-      light.light_1:
-        state: on
-        kelvin: 2000
+
 
 switch:
   - platform: flux
