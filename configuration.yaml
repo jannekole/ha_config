@@ -120,6 +120,7 @@ tts:
 cloud:
 
 light:
+    platform: demo
 
 
 scene:

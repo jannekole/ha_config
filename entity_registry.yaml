@@ -10,3 +10,15 @@ sensor.switch_2_battery_level:
 sensor.switch_1_battery_level:
   platform: deconz
   unique_id: 00:15:8d:00:01:10:0b:d3-02-0012
+light.ceiling_lights:
+  platform: demo
+  unique_id: 2
+light.kitchen_lights:
+  platform: demo
+  unique_id: 3
+light.bed_light:
+  platform: demo
+  unique_id: 1
+light.virtual_light:
+  platform: demo
+  unique_id: 4
