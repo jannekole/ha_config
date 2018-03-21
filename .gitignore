@@ -1,9 +1,11 @@
 *
 !python_scripts
 !custom_components
+!light
 !*.yaml
 !scenes
 !.gitignore
 !*.py
 secrets.yaml
 known_devices.yaml
+
