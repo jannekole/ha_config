@@ -22,3 +22,18 @@ light.bed_light:
 light.virtual_light:
   platform: demo
   unique_id: 4
+sensor.lightlevel_3:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:e0:57:d2-01-0400
+binary_sensor.presence_4:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:e0:57:d2-01-0406
+light.light_2:
+  platform: deconz
+  unique_id: 00:0b:57:ff:fe:c4:9a:ad-01
+light.light_3:
+  platform: deconz
+  unique_id: 90:fd:9f:ff:fe:18:28:96-01
+light.light_4:
+  platform: deconz
+  unique_id: 90:fd:9f:ff:fe:74:87:05-01

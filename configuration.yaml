@@ -81,7 +81,7 @@ logger:
   logs:
     pydeconz: debug
     homeassistant.components.websocket_api: error
-    pychromecast: error
+    pychromecast: debug
 
 # Enables a map showing the location of tracked devices
 map:
@@ -126,25 +126,25 @@ light:
 scene:
   - name: 1 Bright day
     entities:
-      light.light_1:
+      light.olohuone:
         state: on
         kelvin: 4000
         brightness: 255
   - name: 2 Normal
     entities:
-      light.light_1:
+      light.olohuone:
         state: on
         kelvin: 2700
         brightness: 255
   - name: 3 Dimmer
     entities:
-      light.light_1:
+      light.olohuone:
         state: on
         kelvin: 2000
         brightness: 70
   - name: 4 Dim
     entities:
-      light.light_1:
+      light.olohuone:
         state: on
         kelvin: 2000
         brightness: 2

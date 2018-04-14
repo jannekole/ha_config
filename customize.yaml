@@ -5,3 +5,9 @@ sensor.switch_1_battery_level:
   friendly_name: Cube Battery Level
 sensor.switch_2_battery_level:
   hidden: true
+light.light_3:
+  friendly_name: Keittiö
+light.light_2:
+  friendly_name: Eteinen
+light.light_4:
+  friendly_name: Katto

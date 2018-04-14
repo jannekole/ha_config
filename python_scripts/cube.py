@@ -7,12 +7,14 @@ firstDigit = int(value / 1000)
 
 scenes = hass.states.get('scene')
 
-logger.error("value: " + str(firstDigit) + ", " + str(lastDigits) + id + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
-#hass.bus.fire('call_service', {"service": "toggle", "domain":"light", "service_data": {"entity_id": "light.light_1"}})
+entity_id = "light.virtual_light"
+
+logger.error("cube value: " + str(firstDigit) + ", " + str(lastDigits) + id + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1")
+#hass.bus.fire('call_service', {"service": "toggle", "domain":"light", "service_data": {"entity_id": entity_id}})
 if id == 'switch_1':
     # Shaking toggles the lights
     if value == 7007:  
-        hass.bus.fire('call_service', {"service": "toggle", "domain":"light", "service_data": {"entity_id": "light.light_1"}})
+        hass.bus.fire('call_service', {"service": "toggle", "domain":"light", "service_data": {"entity_id": entity_id}})
     
     # flipping to side 2 or double tapping with 2 on top switches scene to red
     if firstDigit == 2 and lastDigits != 0:
