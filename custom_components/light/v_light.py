@@ -14,12 +14,8 @@ from homeassistant.helpers.event import (
 from homeassistant.components.light import (
     ATTR_BRIGHTNESS, ATTR_COLOR_TEMP, ATTR_EFFECT,
     ATTR_RGB_COLOR, ATTR_WHITE_VALUE, ATTR_XY_COLOR, SUPPORT_BRIGHTNESS,
-    SUPPORT_COLOR_TEMP, SUPPORT_EFFECT, SUPPORT_RGB_COLOR, SUPPORT_WHITE_VALUE,
-    ATTR_TRANSITION, Light)
+    SUPPORT_COLOR_TEMP, SUPPORT_EFFECT, ATTR_TRANSITION, Light)
 from homeassistant.components.input_boolean import InputBoolean
-
-SUPPORT_DEMO = (SUPPORT_BRIGHTNESS | SUPPORT_COLOR_TEMP | SUPPORT_EFFECT |
-                SUPPORT_RGB_COLOR | SUPPORT_WHITE_VALUE)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -92,21 +88,21 @@ class DemoLight(Light):
 
         self._seconds_to_control = 60 * 60
 
-        self._default_transition = 1
+        self._default_transition = 0
         self._control_transition = False
 
         self._update_interval = 30
-        self._time_between = 1
+        self._time_between = 5
 
         self._schedule = [
             {'time': parse_time('00:30:00'), 'brightness': 2, 'kelvin': 2200},
-            {'time': parse_time('08:20:00'), 'brightness': 2, 'kelvin': 2200},
-            {'time': parse_time('08:30:00'), 'brightness': 255, 'kelvin': 4000},
+            {'time': parse_time('07:10:00'), 'brightness': 2, 'kelvin': 2200},
+            {'time': parse_time('07:20:00'), 'brightness': 255, 'kelvin': 4000},
             {'time': parse_time('17:00:00'), 'brightness': 255, 'kelvin': 4000},
             {'time': parse_time('19:00:00'), 'brightness': 255, 'kelvin': 2700},
             {'time': parse_time('21:00:00'), 'brightness': 200, 'kelvin': 2700},
             {'time': parse_time('22:00:00'), 'brightness': 80, 'kelvin': 2400},
-            {'time': parse_time('23:59:00'), 'brightness': 40, 'kelvin': 2200},
+            {'time': parse_time('23:59:00'), 'brightness': 80, 'kelvin': 2400},
 
         ]
 

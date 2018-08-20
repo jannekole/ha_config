@@ -13,6 +13,14 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
+
+ffmpeg:
+
+
+camera:
+  - platform: ffmpeg
+    input: /dev/video0
+
 python_script:
 
 #hello_state:
@@ -44,6 +52,10 @@ config:
 
 # device_tracker:
 #   - platform: bluetooth_le_tracker
+
+duckdns:
+  domain: !secret duckdns_name
+  access_token: !secret duckdns_token
 
 http:
   # Secrets are defined in the file secrets.yaml
@@ -120,34 +132,44 @@ tts:
 cloud:
 
 light:
-    platform: demo
-
-
+  - platform: v_light
+  
+  - platform: group
+    name: Olohuone
+    entities:
+      - light.light_1 
+      - light.light_3
+      - light.light_4
 scene:
   - name: 1 Bright day
     entities:
-      light.olohuone:
+      light.virtual_light:
         state: on
         kelvin: 4000
         brightness: 255
   - name: 2 Normal
     entities:
-      light.olohuone:
+      light.virtual_light:
         state: on
         kelvin: 2700
         brightness: 255
   - name: 3 Dimmer
     entities:
-      light.olohuone:
+      light.virtual_light:
         state: on
         kelvin: 2000
         brightness: 70
   - name: 4 Dim
     entities:
-      light.olohuone:
+      light.light_1:
         state: on
         kelvin: 2000
         brightness: 2
+      light.light_3:
+        state: off
+      light.light_4:
+        state: off
+
 
 
 switch:

@@ -1,39 +1,56 @@
 media_player.chromecast:
+  name:
   platform: cast
   unique_id: 612572b6-1b45-9ccf-b338-6dfa8c82f6f7
 light.light_1:
+  name:
   platform: deconz
   unique_id: 00:17:88:01:03:db:fd:b3-0b
 sensor.switch_2_battery_level:
+  name:
   platform: deconz
   unique_id: 00:15:8d:00:01:10:0b:d3-03-000c
 sensor.switch_1_battery_level:
+  name:
   platform: deconz
   unique_id: 00:15:8d:00:01:10:0b:d3-02-0012
 light.ceiling_lights:
+  name:
   platform: demo
   unique_id: 2
 light.kitchen_lights:
+  name:
   platform: demo
   unique_id: 3
 light.bed_light:
+  name:
   platform: demo
   unique_id: 1
-light.virtual_light:
-  platform: demo
-  unique_id: 4
 sensor.lightlevel_3:
+  name:
   platform: deconz
   unique_id: 00:15:8d:00:01:e0:57:d2-01-0400
 binary_sensor.presence_4:
+  name:
   platform: deconz
   unique_id: 00:15:8d:00:01:e0:57:d2-01-0406
 light.light_2:
+  name:
   platform: deconz
   unique_id: 00:0b:57:ff:fe:c4:9a:ad-01
 light.light_3:
+  name:
   platform: deconz
   unique_id: 90:fd:9f:ff:fe:18:28:96-01
 light.light_4:
+  name:
   platform: deconz
   unique_id: 90:fd:9f:ff:fe:74:87:05-01
+sensor.daylight:
+  name:
+  platform: deconz
+  unique_id: 00:21:2e:ff:ff:01:b8:a7-01
+light.virtual_light:
+  name:
+  platform: v_light
+  unique_id: 4

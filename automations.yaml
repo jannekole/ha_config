@@ -1,36 +1,4 @@
-- action:
-  - service: switch.fluxer_update
-  alias: Flux
-  initial_state: 'off'
-  condition: []
-  id: '1520528492563'
-  trigger:
-  - platform: time
-    minutes: /1
-    seconds: 0
-- action:
-  - entity_id: automation.flux
-    service: automation.turn_off
-  alias: Disable Flux On Scene
-  condition: []
-  initial_state: 'off'
-  id: '1520533637982'
-  trigger:
-  - platform: event
-    event_type: call_service
-    event_data:
-      domain: scene
-      service: turn_on
-- action:
-  - entity_id: automation.flux
-    service: automation.turn_on
-  alias: Enable Flux In The Morning
-  initial_state: 'off'
-  condition: []
-  id: '1520503627982'
-  trigger:
-  - at: '21:53:00'
-    platform: time
+
 - action:
   - data:
       brightness: '100'
@@ -43,21 +11,36 @@
   condition: []
   id: '1520550096070'
   trigger:
-  - at: 08:30:00
+  - at: 07:30:00
     platform: time
 - action:
   - data:
-      brightness: '255'
-      entity_id: light.light_1
+      brightness: '10'
+      entity_id: light.light_4
       kelvin: '4000'
-      transition: '600'
+      transition: '0'
     service: light.turn_on
   alias: Wake up 2
   initial_state: 'on'
   condition: []
   id: '1520550356855'
   trigger:
-  - at: 08:40:00
+  - at: 07:40:00
+    platform: time
+
+- action:
+  - data:
+      brightness: '255'
+      entity_id: light.olohuone
+      kelvin: '4000'
+      transition: '600'
+    service: light.turn_on
+  alias: Wake up 3
+  initial_state: 'on'
+  condition: []
+  id: '1520550356855'
+  trigger:
+  - at: 07:41:00
     platform: time
 
 - trigger:
@@ -86,5 +69,22 @@
         event: '{{ trigger.event.data.event }}'
 
 
+- alias: Turn on light when motion detected
+  trigger:
+    platform: state
+    entity_id: binary_sensor.presence_4
+    to: 'on'
+  action:
+    service: light.turn_on
+    entity_id: light.light_2
 
-
+- alias: Turn off light after last movement
+  trigger:
+    platform: state
+    entity_id: binary_sensor.presence_4
+    to: 'off'
+    for:
+      minutes: 1
+  action:
+    service: light.turn_off
+    entity_id: light.light_2
