@@ -2,7 +2,7 @@
 !python_scripts
 !custom_components
 !light
-!*.yaml
+!*.yml
 !*.yaml
 !scenes
 !.gitignore
