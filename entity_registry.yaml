@@ -48,3 +48,13 @@ binary_sensor.presence_7:
   name:
   platform: deconz
   unique_id: 00:15:8d:00:01:e0:57:d2-01-0406
+sensor.lumisensor_cube_3_battery_level:
+  config_entry_id: e4f464a04f6c4e259781d37a18628759
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:10:0b:d3-03-000c
+sensor.lumisensor_cube_2_battery_level:
+  config_entry_id: e4f464a04f6c4e259781d37a18628759
+  name:
+  platform: deconz
+  unique_id: 00:15:8d:00:01:10:0b:d3-02-0012
