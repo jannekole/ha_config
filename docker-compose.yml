@@ -25,3 +25,10 @@ services:
       - DEBUG_ZCL=0
       - DEBUG_ZDP=0
       - DEBUG_OTAU=0
+  nodered:
+    container_name: nodered
+    image: nodered/node-red-docker:rpi
+    ports:
+      - "1880:1880"
+    volumes:
+      - ~/homeassistant/nodered:/data
