@@ -1,0 +1,8 @@
+light.light_1:
+  friendly_name: lattia
+light.light_2:
+  friendly_name: olohuone
+light.light_3:
+  friendly_name: eteinen
+light.light_4:
+  friendly_name: keittio
