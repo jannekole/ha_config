@@ -2,25 +2,79 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: 0
-  longitude: 0
+  latitude: !secret homelat
+  longitude: !secret homelon
   # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 0
   # metric for Metric, imperial for Imperial
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  time_zone: UTC
+  time_zone: Europe/Helsinki
   # Customization file
   customize: !include customize.yaml
 
+zone:
+  - name: Work
+    latitude: !secret worklat
+    longitude: !secret worklon
+    radius: 100
+
 # Show links to resources in log and frontend
-introduction:
+# introduction:
 
 # Enables the frontend
 frontend:
 
+device_tracker:
+  - platform: google_maps
+    username: !secret guname
+    password: !secret gpassword
+    max_gps_accuracy: 500
 # Enables configuration UI
 config:
+
+light:
+  - platform: group
+    name: Olohuone
+    entities:
+      - light.light_1
+      - light.light_2
+
+input_boolean:
+  control_lights:
+    name: Control lights
+    initial: on
+    icon: mdi:lightbulb
+  olohuone_lights:
+    name: Olohuone
+    initial: off
+    icon: mdi:lightbulb
+
+input_number:
+  slider_1:
+    name: Brightness
+    initial: 255
+    min: 2
+    max: 255
+    step: 1
+
+input_datetime:
+  wake_up:
+    name: Wake up
+    has_date: false
+    has_time: true
+    initial: "8:00"
+  dim_lights:
+    name: Dim lights
+    has_date: false
+    has_time: true
+    initial: "17:00"
+  dim_lights_more:
+    name: Dim lights more
+    has_date: false
+    has_time: true
+    initial: "21:00"
+
 
 http:
   # Secrets are defined in the file secrets.yaml
@@ -45,7 +99,14 @@ conversation:
 
 # Enables support for tracking state changes over time
 history:
-
+  exclude:
+    entities:
+      - sensor.time
+      - sensor.date_time
+      - sensor.date_time
+      - sensor.time_date
+      - sensor.time_utc
+      - sensor.beat
 # View all events in a logbook
 logbook:
 
@@ -58,7 +119,17 @@ sun:
 # Weather prediction
 sensor:
   - platform: yr
-
+  - platform: time_date
+    display_options:
+    - 'time'
+    - 'date'
+  - platform: command_line
+    name: Humidity
+    command: "python /config/humid/get_sensor_data.py"
+    scan_interval: 10
+    unit_of_measurement: '%'
+    value_template: "{{ value | float | round(1) }}"
+    device_class: humidity
 # Text to speech
 tts:
   - platform: google

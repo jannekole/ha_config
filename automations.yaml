@@ -1,1 +1,20 @@
-[]
+
+- trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (states.input_datetime.wake_up.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+  action:
+    service: light.turn_on
+    entity_id: light.wakeup
+- trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (states.input_datetime.dim_lights.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+  action:
+    service: light.turn_on
+    entity_id: light.dim_lights
+- trigger:
+    platform: template
+    value_template: "{{ states('sensor.time') == (states.input_datetime.dim_lights_more.attributes.timestamp | int | timestamp_custom('%H:%M', False)) }}"
+  action:
+    service: light.turn_on
+    entity_id: light.dim_lights_more
+

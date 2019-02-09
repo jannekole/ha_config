@@ -2,7 +2,7 @@ version: '3'
 services:
   homeassistant:
     container_name: home-assistant
-    image: homeassistant/raspberrypi3-homeassistant:0.76.2
+    image: homeassistant/raspberrypi3-homeassistant:0.87.0  #0.76.2
     volumes:
       - /homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
@@ -27,8 +27,13 @@ services:
       - DEBUG_OTAU=0
   nodered:
     container_name: nodered
-    image: nodered/node-red-docker:rpi
+    image: nodered/node-red-docker:rpi-v8
     ports:
       - "1880:1880"
     volumes:
       - /homeassistant/nodered:/data
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/TZ:ro
+    environment:
+      - TZ='Europe/Helsinki' 
+    restart: always
